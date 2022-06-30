@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+       <meta charset="UTF-8">
+       <meta http-equiv="X-UA-Compatible" content="IE=edge">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+       <!-- stylesheet -->
+       
+       <link rel="stylesheet" href="../static/assets/styles.css">
+       <link rel="stylesheet" href="../static/assets/forms.css">
+       <title>Home - TodoApp</title>
+</head>
+<body>
+       <header>
+              <div class="container">
+                     <div class="navbar flex">
+                            <h1><a href="#">TodoApp</a></h1>
+                            <nav>
+                                   <ul class="flex"> 
+                                          <li><a class="btn" href="/">Home</a></li>
+                                          <li><a class="btn" href="">Create New </a></li>
+                                   </ul>
+                            </nav>
+                     </div>
+              </div>
+       </header>
+
+       <section class="main-form">
+              <div class="container">
+                     <div class="form-wrapper">
+                            {% if user.is_authenticated %}
+                            <h2 style="padding: 15px; text-align:center;"> Create New Item</h2>
+
+                            <form  method="post">
+                                   {% csrf_token %}
+                            {{ form.as_p  }}
+                            
+                            <input type="submit" value="Post">
+                            </form>
+                     </div>
+                     {% else %}
+                     <div style="text-align:center; padding:30px ">
+                            <p style="font-size: 20px ;padding-bottom:10px;"> You cannot create new item without login </p>
+                            <a href="/" class="btn2" style=" margin:10px 0;">Cancel</a>
+                            <a href="login" class="btn2" style=" margin:10px 0;">Login</a>
+                     </div>
+                     {% endif %}
+              </div>
+       </section>
+
+</body>
+</html>

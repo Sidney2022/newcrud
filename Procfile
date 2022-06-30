@@ -1,0 +1,1 @@
+web gunicorn newcrud .wsgi:application --log-file -

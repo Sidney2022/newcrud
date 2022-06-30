@@ -1,0 +1,52 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+       <meta charset="UTF-8">
+       <meta http-equiv="X-UA-Compatible" content="IE=edge">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+       <!-- stylesheet -->
+       <link rel="stylesheet" href=" {% static 'assets/styles.css' %} ">
+       <link rel="stylesheet" href=" {% static 'assets/forms.css' %} ">
+
+       <title>Home - TodoApp</title>
+</head>
+<body>
+       <header>
+              <div class="container">
+                     <div class="navbar flex">
+                            <h1><a href="#">TodoApp</a></h1>
+                            <nav>
+                                   <ul class="flex"> 
+                                          <!-- <li><a class="btn" href="">Home</a></li> -->
+                                          <!-- <li><a class="btn" href="create.html">Create New </a></li> -->
+                                   </ul>
+                            </nav>
+                     </div>
+              </div>
+       </header>
+
+       <main>
+              <div class="container">
+                     <div class="delete">
+                            {% if user.is_authenticated %}
+                            <form action="" method="post">
+                                   {% csrf_token %}
+                                   <p > are you sure ypu want to delete "{{object}}"?</p>
+                                   <a href="/" class="btn2">Cancel</a>
+                                   <input class="btn2" type="submit" value="Delete">
+                            </form>
+                            {% else %}
+                            <p style="font-size: 20px;"> You cannot access this item </p>
+                            <a href="/" class="btn2">Cancel</a>
+                            {% endif %}
+                     </div>
+              </div>
+       </main>
+
+
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+       <meta charset="UTF-8">
+       <meta http-equiv="X-UA-Compatible" content="IE=edge">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+       <!-- stylesheet -->
+       <link rel="stylesheet" href=" {% static 'assets/styles.css' %} ">
+       <link rel="stylesheet" href=" {% static 'assets/forms.css' %} ">
+
+       <title>Home - TodoApp</title>
+</head>
+<body>
+       <header>
+              <div class="container">
+                     <div class="navbar flex">
+                            <h1><a href="#">TodoApp</a></h1>
+                            <nav>
+                                   <ul class="flex"> 
+                                          <li><a class="btn" href="">Home</a></li>
+                                          
+                                          {% if user.is_authenticated %}
+                                                 <li><a class="btn" href="create">Create New </a></li>
+                                                 <li><a class="btn" href="logout">Logout </a></li>                        
+                                                 <li class="btn" style="text-transform: capitalize ; background:#333; opacity:1 !important;">Hello,  {{user.username}}</li>
+                                          {% else %}
+                                                 <li><a class="btn" href="register">Register</a></li>
+                                                 <li><a class="btn" href="login">Login</a></li>
+
+                                          {% endif %}
+                                   </ul>
+                            </nav>
+                     </div>
+              </div>
+       </header>
+
+
+       <main class="index">
+              <section class="todo-body">
+                     <div class="container">
+                            <!-- <h1>TodoApp</h1> -->
+                     {% if user.is_authenticated %}
+                     {% for object in object_list %}
+                            <div class="grid">
+                                   <h3 class="title"> <strong> {{object.title}} </strong> </h3>
+                                   <p> {{object.description | truncatewords:10}}
+                                          <br>
+                                          <a style="color: teal;" href="{{object.pk}}/detail">Read More</a>
+                                   </p>
+
+                                  <ul class="flex">
+
+                                          <li><a class="btn" href="{{object.pk}}/update">Update</a></li>
+                                          <li><a class="btn" href="{{object.pk}}/delete">Delete</a></li>
+                                  </ul>
+                            </div>
+
+                            
+                            {% empty %}
+                            <p style="font-size: 20px;"> Nothing to show here yet. Create a new list with the "Create New" button above </p>
+                            {% endfor %}
+                            {% else %}
+                            <p style="font-size: 20px;"> You cannot view any item because you are not logged in </p>
+                            {% endif %}
+
+                           
+                            <!-- <hr> -->
+                     </div>
+              </section>
+       </main>
+</body>
+</html>

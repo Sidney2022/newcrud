@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+       <meta charset="UTF-8">
+       <meta http-equiv="X-UA-Compatible" content="IE=edge">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+       <!-- stylesheet -->
+       
+       <link rel="stylesheet" href="../static/assets/styles.css">
+       <link rel="stylesheet" href="../static/assets/forms.css">
+       <title>Login - TodoApp</title>
+</head>
+<body>
+       <header>
+              <div class="container">
+                     <div class="navbar flex">
+                            <h1><a href="#">TodoApp</a></h1>
+                            <nav>
+                                   <ul class="flex"> 
+                                          <!-- <li><a class="btn" href="/index">Home</a></li> -->
+                                          <!-- <li><a class="btn" href="">Create New </a></li> -->
+                                   </ul>
+                            </nav>
+                     </div>
+              </div>
+       </header>
+
+       <section class="main-form">
+              <div class="container">
+                     <div class="form-wrapper">
+                            <h2 style="padding: 15px; text-align:center;"> Login to your Account </h2>
+
+                            <form action="login" method="post">
+                                   {% csrf_token %}
+                            <!-- {{ form.as_p  }}
+                                   in
+                             -->
+                             <p>
+                                   {% for message in messages %}
+                                          {{message}}
+                                   {% endfor %}
+                             </p>
+                             <input type="text" name="username" id="" placeholder="Username">
+                             <!-- <input type="email" name="email" id="" placeholder="Email"> -->
+                             <input type="password" name="password" id="" placeholder="Password">
+                         
+
+
+                             <!-- <input type="text" name="first_name" id="" placeholder="First Name" required>
+                             <input type="text" name="last_name" id="" placeholder="Last Name" required>
+                             <input type="text" name="username" id="" placeholder="Username" required>
+                             <input type="email" name="email" id="" placeholder="Email" required>
+                             <input type="password" name="password" id="" placeholder="Password" required>
+                             <input type="password" name="password2" id="" placeholder="Confirm Password" required> -->
+
+                            <input type="submit" value="Login">
+                            </form>
+                            <p style="text-align: center;">
+                                   No account yet? click here to<a href="register">Register</a>
+                            </p>
+                     </div>
+              </div>
+       </section>
+
+</body>
+</html>

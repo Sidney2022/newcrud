@@ -1,0 +1,49 @@
+ 
+ {% load static %}
+ 
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+       <meta charset="UTF-8">
+       <meta http-equiv="X-UA-Compatible" content="IE=edge">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <!-- stylesheet -->
+       
+            <link rel="stylesheet" href=" {% static 'assets/styles.css' %} ">
+            <link rel="stylesheet" href=" {% static 'assets/forms.css'%} ">
+            <title>Update - TodoApp</title>
+</head>
+<body>
+       <header>
+              <div class="container">
+                     <div class="navbar flex">
+                            <h1><a href="#">TodoApp</a></h1>
+                            <nav>
+                                   <ul class="flex"> 
+                                          <li><a class="btn" href="index.html">Home</a></li>
+                                          <li><a class="btn" href="">Create New </a></li>
+                                   </ul>
+                            </nav>
+                     </div>
+              </div>
+       </header>
+
+       <section class="main-form">
+              <div class="container " >
+                     <div class="form-wrapper">
+                            <form action="" method="post">
+                                   {% csrf_token %}
+                            {{ form.as_p  }}
+                            
+                            <p class="update">
+                            <a href="/" class="btn2">Cancel</a>
+
+                            <input class="btn2" type="submit" value="Post Update">
+                            </form> </p>
+                     </div>
+              </div>
+       </section>
+
+       
+</body>
+</html>

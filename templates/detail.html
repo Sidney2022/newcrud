@@ -1,0 +1,61 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+       <meta charset="UTF-8">
+       <meta http-equiv="X-UA-Compatible" content="IE=edge">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+       <!-- stylesheet -->
+       <link rel="stylesheet" href=" {% static 'assets/styles.css' %} ">
+       <link rel="stylesheet" href=" {% static 'assets/forms.css' %} ">
+
+       <title>Home - TodoApp</title>
+</head>
+<body>
+       <header>
+              <div class="container">
+                     <div class="navbar flex">
+                            <h1><a href="#">TodoApp</a></h1>
+                            <nav>
+                                   <ul class="flex"> 
+                                          <li><a class="btn" href="/">Home</a></li>
+                                          <li><a class="btn" href="/create">Create New </a></li>
+                                   </ul>
+                            </nav>
+                     </div>
+              </div>
+       </header>
+
+
+       <main class="index">
+              <section class="todo-body">
+                     <div class="container">
+                            {% if user.is_authenticated %}
+
+                            <div class="grid">
+                                   <h3 class="title"> <strong> {{object.title}} </strong> </h3>
+                                   <p> {{object.description }} </p>
+
+                                  <ul class="flex">
+                                        
+                                          <li><a class="btn" href="/{{object.pk}}/update">Update</a></li>
+                                          <li><a class="btn" href="/{{object.pk}}/delete">Delete</a></li>
+                                  </ul>
+                            </div>
+                            {% else %}
+                            <div style="text-align:center; padding:30px ">
+                                   <p style="font-size: 20px ;padding-bottom:10px;"> You cannot access this item </p>
+                                   <a href="/index" class="btn2" style=" margin:10px 0;">Cancel</a>
+                            </div>
+                            {% endif %}
+
+                            
+                         
+                         
+                     </div>
+              </section>
+       </main>
+</body>
+</html>
